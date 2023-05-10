@@ -1,38 +1,36 @@
 <?php
-    $db_pass='Gk2U.c45qL5A7Yfv';
-    $db_user='ggn';
+    $db_servername = "localhost";
+    $db_username = "web1";
+    $db_password = "]VDCtzWaW4q/Ipv6";
+    // Kapcsolódás az adatbázishoz
+$conn = mysqli_connect($db_servername, $db_username, $db_password, $db_username);
 
-            // Kapcsolódás az adatbázishoz
-    $conn = mysqli_connect("localhost", "$db_user", "$db_pass", "$db_user");
+// Ellenőrizzük a kapcsolatot
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
-    // Ellenőrizzük a kapcsolatot
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-    // Ellenőrizzük, hogy az űrlap elküldésekor meg lett-e adva a felhasználónév és jelszó
-    if (isset($_POST['username']) && isset($_POST['password'])) {
-        $username = $_POST['username'];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        
-        // Ellenőrizzük, hogy a felhasználónév még nem létezik az adatbázisban
-        $sql = "SELECT * FROM users WHERE username = '$username'";
-        $result = mysqli_query($conn, $sql);
-        
-        if (mysqli_num_rows($result) == 0) {
-            // Ha a felhasználónév még nem létezik, létrehozzuk a felhasználói fiókot
-            $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
-            if (mysqli_query($conn, $sql)) {
-                echo "Sikeres regisztráció!";
-            } else {
-                echo "Hiba: " . mysqli_error($conn);
-            }
-        } else {
-            echo "A megadott felhasználónév már létezik!";
-        }
-    }
+// Ellenőrizzük, hogy az űrlap elküldésekor meg lett-e adva a felhasználónév és jelszó
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    $username = $_POST['username'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     
-
+    // Ellenőrizzük, hogy a felhasználónév még nem létezik az adatbázisban
+    $sql = "SELECT * FROM users WHERE username = '$username'";
+    $result = mysqli_query($conn, $sql);
+    
+    if (mysqli_num_rows($result) == 0) {
+        // Ha a felhasználónév még nem létezik, létrehozzuk a felhasználói fiókot
+        $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
+        if (mysqli_query($conn, $sql)) {
+            echo "Sikeres regisztráció!";
+        } else {
+            echo "Hiba: " . mysqli_error($conn);
+        }
+    } else {
+        echo "A megadott felhasználónév már létezik!";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,12 +39,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regisztráció</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style001.css">
     <link rel="icon" type="image/x-icon" href="ikon/logo.png">
     <script src="https://kit.fontawesome.com/96ced10c0a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bejelentkezes.css">
     <link rel="stylesheet" href="css/arak_eszkozok.css">
 </head>

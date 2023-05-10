@@ -1,6 +1,7 @@
 <?php
-$db_pass='Gk2U.c45qL5A7Yfv';
-$db_user='ggn';
+$db_servername = "localhost";
+$db_username = "web1";
+$db_password= "]VDCtzWaW4q/Ipv6";
 
    session_start();
     if(isset($_SESSION['username'])) {
@@ -11,7 +12,7 @@ $db_user='ggn';
     }
 
 // adatbáziskapcsolat létrehozása
-$conn = mysqli_connect("localhost", "$db_user", "$db_pass", "$db_user");
+$conn = mysqli_connect($db_servername, $db_username, $db_password, $db_username);
 
 // űrlap feldolgozása
 if(isset($_POST['submit'])) {
@@ -42,12 +43,13 @@ $order_result = mysqli_query($conn, $order_query);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bejelentkezés</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style001.css">
     <link rel="icon" type="image/x-icon" href="ikon/logo.png">
     <script src="https://kit.fontawesome.com/96ced10c0a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bejelentkezes.css">
     <link rel="stylesheet" href="tabla.css">
 </head>
@@ -72,7 +74,7 @@ $order_result = mysqli_query($conn, $order_query);
     </nav>
 
   
-    <section class="asd">
+    <section class="asd3">
           <div class="wrapper">
             <div class="container">
                 <br>
@@ -89,12 +91,13 @@ $order_result = mysqli_query($conn, $order_query);
                     <p><label for="quantity">Darabszám:</label></p>
                     <input type="number" name="quantity" min="1" required>
                     <br>
-                    <input type="submit" name="submit" value="Rendelés leadása">
+                    <input type="submit" name="submit" value="Rendelés leadása" class="btn btn-primary mt-3">
                     <br>
                   </form>
-
+            </div>
+            <div class="rendelestablazat">
                 <h2>Rendeléseim:</h2>
-                  <table class="table">
+                  <table class="rendeles">
                         <tr>
                         <th>Termék neve</th>
                         <th>Darabszám</th>
@@ -109,16 +112,15 @@ $order_result = mysqli_query($conn, $order_query);
                     ?>
                   </table>
             </div>
-          </div>
-    </section>                    
-    <div class="copy">
+        </div>
+        <div class="copy">
         <p class="null">Elérhetőség: </p>
         <p class="null"><a href ="https://hu-hu.facebook.com/">Facebook</a>
         <a href = "https://www.instagram.com/">Instagram</a>
         <a href = "https://twitter.com/">Twitter</a>
         <a href = https://www.youtube.com/watch?v=dQw4w9WgXcQ>Youtube</a></p>
         <p>&copy Copyright 2023 Greek God Nutritions</p>       
-    </div>   
-</section> 
+    </div> 
+    </section>                     
 </body>
 </html>

@@ -108,25 +108,24 @@ a.active,a:hover{
     }
 }
 section.asd{
-    padding-top: 100px;
-    background: url(hatter/gym2.jpg) no-repeat;
+    background: url(hatter/gym2.jpg) contain;
     background-size: cover;
-    height: calc(100vh - 80px);
     box-shadow: 0 0 10px black;
 }
 
 section.asd2{
 
-    padding-top: 100px;
-    background: url(hatter/gym3.jpg) no-repeat;
-    background-size: cover;
-    height: calc(100vh - 80px);
+    background: url(hatter/gym2.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
     box-shadow: 0 0 10px black;
 }
 
 section div.wrapper{
     text-align: center;
-    padding: 15% 10%;
+    background: url(hatter/gym2.jpg);
+    background-size: cover;
+    padding: 0px 0px 0px 0px;
 }
 section div.wrapper h2{
     padding: 0;
@@ -491,3 +490,22 @@ html{
     height:20px;
 
 }
+div.rendelestablazat table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  table, th, td {
+    border: 1px solid #000;
+  }
+  
+  th, td {
+    padding: 0.5rem;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #000;
+    color: #fff;
+  }
