@@ -18,18 +18,17 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     // Ellenőrizzük, hogy a felhasználónév még nem létezik az adatbázisban
     $sql = "SELECT * FROM users WHERE username = '$username'";
     $result = mysqli_query($conn, $sql);
-    
     if (mysqli_num_rows($result) == 0) {
         // Ha a felhasználónév még nem létezik, létrehozzuk a felhasználói fiókot
-        $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
-        if (mysqli_query($conn, $sql)) {
-            echo "Sikeres regisztráció!";
+            $sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
+            if (mysqli_query($conn, $sql)) {
+                echo "Sikeres regisztráció!";
+            } else {
+                echo "Hiba: " . mysqli_error($conn);
+            }
         } else {
-            echo "Hiba: " . mysqli_error($conn);
+            echo "A megadott felhasználónév már létezik!";
         }
-    } else {
-        echo "A megadott felhasználónév már létezik!";
-    }
 }
 ?>
 <!DOCTYPE html>
